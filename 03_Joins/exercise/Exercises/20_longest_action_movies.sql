@@ -2,8 +2,8 @@
 -- (5 rows, expected lengths around 180 - 200)
 SELECT m.title, m.length_minutes, m.release_date
 FROM movie AS m
-	JOIN  movie_genre AS mg ON mg.movie_id = m.movie_id
- 	JOIN  genre AS g ON g.genre_id = mg.genre_id
+	JOIN  movie_genre AS mg USING (movie_id)
+ 	JOIN  genre AS g USING (genre_id)
 WHERE g.genre_name = 'Action'
 ORDER BY m.length_minutes DESC ,
 		 m.release_date DESC

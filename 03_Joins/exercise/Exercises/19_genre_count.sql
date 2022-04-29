@@ -2,6 +2,6 @@
 -- (19 rows, expected result for Action is around 180).
 SELECT g.genre_name, count(m.title) AS num_of_movies
 FROM movie AS m
-	JOIN movie_genre AS mg ON mg.movie_id = m.movie_id
-	JOIN genre AS g ON g.genre_id = mg.genre_id	
+	JOIN movie_genre AS mg USING (movie_id)
+	JOIN genre AS g  USING (genre_id)
 GROUP BY g.genre_name;

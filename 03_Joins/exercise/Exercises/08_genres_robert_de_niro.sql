@@ -2,8 +2,8 @@
 SELECT DISTINCT g.genre_name 
 FROM person AS p
 	JOIN movie_actor AS ma ON ma.actor_id = p.person_id
-	JOIN movie AS m ON m.movie_id = ma.movie_id
-	JOIN movie_genre AS mg ON mg.movie_id = m.movie_id
-	JOIN genre AS g ON g.genre_id = mg.genre_id
+	JOIN movie AS m USING (movie_id)
+	JOIN movie_genre AS mg USING (movie_id)
+	JOIN genre AS g USING (genre_id)
 WHERE p.person_name = 'Robert De Niro' AND m.release_date >= '2010-01-01';
 

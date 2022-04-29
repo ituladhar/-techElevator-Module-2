@@ -2,11 +2,11 @@
 SELECT m.title, m.tagline
 FROM genre AS g
 	JOIN movie_genre AS mg 
-		ON mg.genre_id = g.genre_id
+		USING (genre_id)
 	JOIN movie AS m 
-		ON m.movie_id = mg.movie_id
+		USING (movie_id)
 	JOIN movie_actor AS ma 
-		ON ma.movie_id = m.movie_id
+		USING (movie_id)
 	JOIN person AS p 
 		ON p.person_id = ma.actor_id
 WHERE g.genre_name = 'Family'
