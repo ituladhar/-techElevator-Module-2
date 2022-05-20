@@ -32,10 +32,19 @@ public class App {
 
     private void handleListLocations() {
         //Step Five: List all locations
+        Location[] locations = locationService.getAll();
+        consoleService.printLocations(locations);
     }
 
     private void handleShowLocationDetails() {
         //Step Six: Get location details
+        Location[] locations = locationService.getAll();
+        consoleService.printLocationMenu(locations);
+        int locationID = consoleService.promptForMenuSelection();
+        if (locationID > 0){
+            Location location = locationService.getOne(locationID);
+            consoleService.printLocation(location);
+        }
     }
 
 }
