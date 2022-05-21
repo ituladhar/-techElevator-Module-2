@@ -17,17 +17,44 @@ public class AuctionService {
 
 
     public Auction add(Auction newAuction) {
-        // place code here
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Auction> entity = new HttpEntity<>(newAuction, headers);
+        try {
+            return this.restTemplate.postForObject(API_BASE_URL, entity, Auction.class);
+        } catch (ResourceAccessException ae) {
+            BasicLogger.log(ae.getMessage());
+              } catch (RestClientResponseException cre) {
+            BasicLogger.log(cre.getMessage());
+        }
         return null;
     }
 
     public boolean update(Auction updatedAuction) {
-        // place code here
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Auction> entity = new HttpEntity<>(updatedAuction, headers);
+        try {
+         this.restTemplate.put(API_BASE_URL + updatedAuction.getId(), entity);
+         return true;
+        } catch (ResourceAccessException ae) {
+            BasicLogger.log(ae.getMessage());
+        } catch (RestClientResponseException cre) {
+            BasicLogger.log(cre.getMessage());
+        }
         return false;
     }
 
+
     public boolean delete(int auctionId) {
-        // place code here
+        try {
+            this.restTemplate.delete(API_BASE_URL + auctionId);
+            return true;
+        } catch (ResourceAccessException ae) {
+            BasicLogger.log(ae.getMessage());
+        } catch (RestClientResponseException cre) {
+            BasicLogger.log(cre.getMessage());
+        }
         return false;
     }
 
