@@ -167,7 +167,7 @@ With your model in place, you can set up some initial data to expose in your API
 @RestController
 public class LocationController {
 
-    private List<Location> locations = new ArrayList<>();
+    private final List<Location> locations = new ArrayList<>();
 
     public LocationController() {
         locations.add(new Location(1,
@@ -297,7 +297,7 @@ import java.util.Random;
 @RestController
 public class LocationController {
 
-    private List<Location> locations = new ArrayList<>();
+    private final List<Location> locations = new ArrayList<>();
 
     public LocationController() {
         locations.add(new Location(1,
@@ -338,21 +338,21 @@ public class LocationController {
                 "19103"));
     }
 
-    @RequestMapping( path = "/locations", method = RequestMethod.GET )
+    @RequestMapping(path = "/locations", method = RequestMethod.GET)
     public List<Location> list() {
         return locations;
     }
 
-    @RequestMapping( value = "/locations", method = RequestMethod.POST)
+    @RequestMapping(value = "/locations", method = RequestMethod.POST)
     public Location add(@RequestBody Location location) {
-        if( location != null ) {
+        if (location != null) {
             locations.add(location);
             return location;
         }
         return null;
     }
 
-    @RequestMapping( path = "/locations/random", method = RequestMethod.GET )
+    @RequestMapping(path = "/locations/random", method = RequestMethod.GET)
     public Location random() {
         return locations.get(new Random().nextInt(locations.size()));
     }

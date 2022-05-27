@@ -34,7 +34,7 @@ public class AuctionControllerTest {
     @Autowired
     private ObjectMapper mapper;
 
-    private AuctionDao dao;
+    private final AuctionDao dao;
 
     public AuctionControllerTest() {
         dao = new MemoryAuctionDao();

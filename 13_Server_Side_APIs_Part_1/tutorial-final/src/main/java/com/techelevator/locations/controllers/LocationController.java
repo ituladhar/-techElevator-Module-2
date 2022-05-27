@@ -13,7 +13,7 @@ import java.util.Random;
 @RestController
 public class LocationController {
 
-    private List<Location> locations = new ArrayList<>();
+    private final List<Location> locations = new ArrayList<>();
 
     public LocationController() {
         locations.add(new Location(1,
