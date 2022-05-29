@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemoryLocationDao implements LocationDao {
 
-    private List<Location> locations = new ArrayList<>();
+    private final List<Location> locations = new ArrayList<>();
 
     public MemoryLocationDao() {
     	initializeLocationData();

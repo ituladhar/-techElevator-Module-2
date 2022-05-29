@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Component
 public class MemoryAuctionDao implements AuctionDao {
@@ -37,6 +39,7 @@ public class MemoryAuctionDao implements AuctionDao {
     }
 
     @Override
+
     public Auction create(Auction auction) {
         auction.setId(getMaxIdPlusOne());
         auctions.add(auction);

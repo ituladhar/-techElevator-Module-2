@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/locations")
 public class LocationController {
 
-    private LocationDao dao;
+    private final LocationDao dao;
 
     public LocationController(LocationDao dao) {
         this.dao = dao;
