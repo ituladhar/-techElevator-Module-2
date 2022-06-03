@@ -17,7 +17,7 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class LocationController {
 
-    private LocationDao dao;
+    private final LocationDao dao;
 
     public LocationController() {
         dao = new MemoryLocationDao();

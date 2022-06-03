@@ -17,7 +17,7 @@ import java.util.Optional;
 public class InMemoryUserRepository implements UserRepository {
 
     private final String USERS_DATA_FILE = "users.txt";
-    private static List<User> users = new ArrayList<>();
+    private static final List<User> users = new ArrayList<>();
 
     public InMemoryUserRepository() {
         if (users.isEmpty()) {
