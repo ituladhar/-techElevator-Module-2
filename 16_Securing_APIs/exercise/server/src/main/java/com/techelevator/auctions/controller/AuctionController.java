@@ -42,27 +42,27 @@ public class AuctionController {
         return dao.get(id);
     }
 
-    @PreAuthorize("hasAnyRole('CREATOR','ADMIN')")
+    @PreAuthorize("hasAnyRole('CREATOR','ADMIN')") //authentication added
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "", method = RequestMethod.POST)
     public Auction create(@Valid @RequestBody Auction auction) {
         return dao.create(auction);
     }
 
-    @PreAuthorize("hasAnyRole('CREATOR','ADMIN')")
+    @PreAuthorize("hasAnyRole('CREATOR','ADMIN')") //authentication added
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public Auction update(@Valid @RequestBody Auction auction, @PathVariable int id) throws AuctionNotFoundException {
         return dao.update(auction, id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')") //authentication added
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) throws AuctionNotFoundException {
         dao.delete(id);
     }
 
-    @RequestMapping(path = "/whoami")
+    @RequestMapping(path = "/whoami") //Return user identity
     public String whoAmI(Principal principal) {
         return principal.getName();
     }
